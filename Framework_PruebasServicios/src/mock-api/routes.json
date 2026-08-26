@@ -1,0 +1,18 @@
+{
+  "/": "/",
+  "/auth/login": "/login",
+  "/auth/register": "/register",
+  "/login": "/login",
+  "/register": "/register",
+  "/search": "/search",
+  "/users": "/users",
+  "/users/:id": "/users/:id",
+  "/cart": "/cart",
+  "/cart/reset": "/cart/reset",
+  "/cart/add": "/cart/add",
+  "/cart/remove/:id": "/cart/remove/:id",
+  "/cart/update": "/cart/update",
+  "/checkout/start": "/checkout/start",
+  "/checkout/email": "/checkout/email",
+  "/messenger/contact": "/messenger/contact"
+}

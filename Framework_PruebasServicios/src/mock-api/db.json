@@ -1,0 +1,48 @@
+{
+  "search": [
+    {
+      "id": "1",
+      "name": "Guitarra Acústica"
+    },
+    {
+      "id": "2",
+      "name": "Bajo Eléctrico"
+    }
+  ],
+  "cart": [
+    {
+      "id": "2",
+      "name": "Bajo Eléctrico",
+      "quantity": 1
+    }
+  ],
+  "login": [
+    {
+      "id": "1",
+      "status": "success",
+      "token": "abc123",
+      "user": {
+        "id": 1,
+        "name": "Valeryn",
+        "email": "cliente@audiomusica.com"
+      }
+    },
+    {
+      "email": "usuario@gmail.com",
+      "password": "Password123",
+      "id": "JQzmdZP"
+    },
+    {
+      "id": "pTcxeTy"
+    }
+  ],
+  "checkout": [
+    {
+      "id": "1",
+      "status": "started",
+      "orderId": "AUDIO-001",
+      "message": "Checkout iniciado correctamente"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

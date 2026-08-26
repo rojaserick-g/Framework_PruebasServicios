@@ -1,0 +1,10 @@
+{
+  "name": "framework-servicios-mock-api",
+  "private": true,
+  "scripts": {
+    "mock:api": "node src/mock-api/server.js"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4"
+  }
+}

@@ -1,0 +1,64 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+buildDir = file(System.getProperty("user.home") + "\\.gradle-build\\Framework--servicios")
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // Cucumber con JUnit 5
+    testImplementation 'io.cucumber:cucumber-java:7.14.0'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.14.0'
+
+    // JUnit 5 y suite para API runner
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.10.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+// Librerías para API REST
+    testImplementation 'io.rest-assured:rest-assured:5.4.0'
+    testImplementation 'io.rest-assured:json-path:5.4.0'
+    testImplementation 'io.rest-assured:xml-path:5.4.0'   // opcional, si usas XML
+
+    // Jackson para transformar objetos Java ↔ JSON
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+
+    implementation 'commons-codec:commons-codec:1.15'
+}
+
+test {
+    useJUnitPlatform()   // 👈 activa JUnit 5
+    include '**/*Runner.class' // 👈 incluye cualquier clase terminada en Runner
+    include '**/*Test.class' // 👈 incluye cualquier clase terminada en Test
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true   // opcional: muestra salida en consola
+    }
+}
+
+// Levanta el mock local manualmente en una terminal separada.
+// Se usa como: gradlew mockApi
+// Luego se ejecuta la suite de Cucumber en otra terminal.
+tasks.register('mockApi') {
+    doLast {
+        exec {
+            commandLine 'node', 'src/mock-api/server.js'
+        }
+    }
+}
