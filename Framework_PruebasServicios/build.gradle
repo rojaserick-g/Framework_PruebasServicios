@@ -42,7 +42,13 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()   // 👈 activa JUnit 5
+    useJUnitPlatform()
+
+    // Propaga el tag recibido desde el Control Plane hacia Cucumber.
+    def cucumberTags = System.getProperty("cucumber.filter.tags")
+    if (cucumberTags) {
+        systemProperty "cucumber.filter.tags", cucumberTags
+    }
     include '**/*Runner.class' // 👈 incluye cualquier clase terminada en Runner
     include '**/*Test.class' // 👈 incluye cualquier clase terminada en Test
     testLogging {
