@@ -4,7 +4,6 @@ plugins {
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
-buildDir = file(System.getProperty("user.home") + "\\.gradle-build\\Framework--servicios")
 
 repositories {
     mavenCentral()
